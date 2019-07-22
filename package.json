@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "env2file -k CONFAPP",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
