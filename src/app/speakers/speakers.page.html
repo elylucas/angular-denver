@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Speakers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-group *ngFor="let speakerGroup of speakerGroups | async">
+      <ion-item-divider sticky>
+        <ion-label>{{ speakerGroup.letter }}</ion-label>
+      </ion-item-divider>
+      <speaker-item
+        *ngFor="let speaker of speakerGroup.speakers"
+        routerLink="./{{ speaker.id }}"
+        [speaker]="speaker">
+      </speaker-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

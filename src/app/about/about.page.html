@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>About</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="event$ | async as event">
+    <div class="logo">
+      <img src="assets/angular-denver-logo.png" />
+    </div>
+    <ion-list>
+      <ion-item>
+        <h1>August 1st & 2nd 2019</h1>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-text>
+            This year, August 1-2, the second annual Angular Denver conference will bring more than 40 Angular
+            Rockstar Speakers to The Curtis Hotel, for 2 full days of educational (and entertaining) talks. In
+            addition, there will be 2 days of optional pre-conference workshops on July 30th and 31st. The
+            conference draws around 300 attendees from across the country, and a possible 300+ for the
+            workshop days.
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngIf="venue$ | async as venue" (click)="openMap(venue)" detail="true">
+        <ion-label>
+          <h2>The Curtis Hotel</h2>
+          <p>1405 Curtis Street Denver, Colorado 80202</p>
+        </ion-label>
+      </ion-item>
+      <ion-item href="https://angulardenver.slack.com" target="_system" detail="true">
+        <ion-label><h2>Join Angular Denver Slack</h2></ion-label>
+      </ion-item>
+      <ion-item href="https://angulardenver.com/angular-denver-code-of-conduct" target="_system">
+        <ion-label>Code of Conduct</ion-label>
+      </ion-item>
+    </ion-list>
+    <div class="ionic">
+      <a href="http://ionicframework.com" target="_system">
+        <ion-text color="medium">
+          Made with
+          <ion-icon name="logo-ionic"></ion-icon> and <ion-icon name="heart"></ion-icon>
+          for Angular Denver
+        </ion-text>
+      </a>
+    </div>
+  </ng-container>
+</ion-content>

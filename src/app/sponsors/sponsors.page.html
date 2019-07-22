@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sponsors</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let sponsor of sponsors | async">
+    <a href="{{ sponsor.url }}" target="_system"><img [src]="sponsor.imageUrl"/></a>
+    <ion-card-content>
+      <ion-card-title>
+        {{ sponsor.name }}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,17 @@
+
+div.logo {
+  display: flex;
+  justify-content: center;
+  background: 0 0 url('/assets/rockstar-bg.jpg');
+  img {
+    height: 200px;
+  }
+}
+
+div.ionic {
+  font-size: 14px;
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "confapp-client",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "3795edd4"
+}

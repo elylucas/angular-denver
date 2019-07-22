@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/sessions"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Session Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="session">
+    <div class="header">
+      <ion-label>
+        <h2>{{ session.title }}</h2>
+        <p>{{ session.timeStart | date: 'h:mm aa' }} - {{ session.timeEnd | date: 'h:mm aa' }}</p>
+        <p>{{ session.room.name }}</p>
+      </ion-label>
+      <ion-icon
+        class="star"
+        [name]="isFavorite ? 'star' : 'star-outline'"
+        (click)="toggleFavorite(session)"
+      ></ion-icon>
+    </div>
+
+    <ion-item-divider>
+      <ion-label>Description</ion-label>
+    </ion-item-divider>
+
+    <ion-item class="description" lines="none">
+      <p>{{ session.abstract }}</p>
+    </ion-item>
+
+    <ion-item-divider>
+      <ion-label>Speaker{{ session.speakers.length > 1 ? 's' : '' }}</ion-label>
+    </ion-item-divider>
+
+    <speaker-item
+      routerLink="./speakers/{{speaker.id}}"
+      *ngFor="let speaker of session.speakers"
+      [speaker]="speaker"
+      lines="none"
+    >
+    </speaker-item>
+  </ng-container>
+</ion-content>

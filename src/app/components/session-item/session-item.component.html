@@ -1,0 +1,19 @@
+<ion-item detail="false" lines="none">
+  <ion-label>
+    <h2>{{ session.title }}</h2>
+    <p>
+      <span class="speaker-name" *ngFor="let speaker of session.speakers">
+        {{ speaker.firstName }} {{ speaker.lastName }}
+      </span>
+    </p>
+    <p>
+      {{ session.timeStart | date: 'h:mm aa' }} - {{ session.timeEnd | date: 'h:mm aa' }},
+      {{ session.room ? session.room.name : '' }}
+    </p>
+  </ion-label>
+  <ion-icon
+    (click)="toggleFavorite($event, session)"
+    [name]="session.isFavorite ? 'star' : 'star-outline'"
+    slot="end"
+  ></ion-icon>
+</ion-item>

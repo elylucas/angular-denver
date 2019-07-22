@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ng-container *ngIf="sessionGroups && sessionGroups.length === 0">
+      <ion-item>
+        <p>You don't have any sessions saved to your favorites. Visit the sessions page and add some!</p>
+      </ion-item>
+    </ng-container>
+    <ion-item-group *ngFor="let sessionGroup of sessionGroups; trackBy: trackByFnSessionGroup">
+      <ion-item-divider sticky>
+        <ion-label>{{ sessionGroup.timeStart | date: 'h:mm aa' }}</ion-label></ion-item-divider
+      >
+      <session-item
+        routerLink="./{{ session.id }}"
+        *ngFor="let session of sessionGroup.sessions; trackBy: trackByFnSession"
+        [session]="session"
+      ></session-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

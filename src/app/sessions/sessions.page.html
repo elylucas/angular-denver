@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="day" (ionChange)="segmentChanged()">
+      <ion-segment-button value="08/01/2019">
+        <ion-label>Aug 1</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="08/02/2019">
+        <ion-label>Aug 2</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-item-group *ngFor="let sessionGroup of sessionGroups; trackBy: trackByFnSessionGroup">
+      <ion-item-divider sticky>
+        <ion-label>{{ sessionGroup.timeStart | date: 'h:mm aa' }}</ion-label>
+      </ion-item-divider>
+      <session-item
+        routerLink="./{{ session.id }}"
+        *ngFor="let session of sessionGroup.sessions; trackBy: trackByFnSession"
+        [session]="session"
+      ></session-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

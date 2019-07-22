@@ -1,0 +1,13 @@
+ion-item {
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+.speaker-name {
+  &::after {
+    content: '&';
+  }
+
+  &:last-child::after {
+    content: '';
+  }
+}

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/speakers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Speaker Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="speaker$ | async as speaker">
+    <ion-card>
+      <img src="{{ speaker.imgUrl }}" />
+      <ion-card-header>
+        <ion-card-subtitle *ngIf="speaker.company">{{ speaker.company }}</ion-card-subtitle>
+        <ion-card-title>{{ speaker.firstName }} {{ speaker.lastName }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ speaker.bio }}</p>
+      </ion-card-content>
+      <div class="social" *ngIf="speaker.twitter">
+        <a [href]="speaker.twitter" target="_system">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+      </div>
+
+      <ng-container *ngIf="sessions$ | async as sessions">
+        <ion-item-divider>
+          <ion-label>Session{{ sessions.length > 1 ? 's' : '' }}</ion-label>
+        </ion-item-divider>
+        <session-item routerLink="/tabs/sessions/{{session.id}}" *ngFor="let session of sessions" [session]="session"></session-item>
+      </ng-container>
+    </ion-card>
+  </ng-container>
+</ion-content>

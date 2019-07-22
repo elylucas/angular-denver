@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+import { IonicModule } from '@ionic/angular';
+
+import { SessionDetailPage } from './session-detail.page';
+import { ComponentsModule } from '../components/components.module';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SessionDetailPage
+  }
+];
+
+@NgModule({
+  imports: [
+    ComponentsModule,
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    RouterModule.forChild(routes)
+  ],
+  declarations: [SessionDetailPage]
+})
+export class SessionDetailPageModule {}
