@@ -16,7 +16,7 @@
         <ion-card-title>{{ speaker.firstName }} {{ speaker.lastName }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>{{ speaker.bio }}</p>
+        <p [innerHTML]="speaker.bio | abstract"></p>
       </ion-card-content>
       <div class="social" *ngIf="speaker.twitter">
         <a [href]="speaker.twitter" target="_system">

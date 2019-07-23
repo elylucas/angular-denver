@@ -27,7 +27,7 @@
     </ion-item-divider>
 
     <ion-item class="description" lines="none">
-      <p>{{ session.abstract }}</p>
+      <p [innerHTML]="session.abstract | abstract"></p>
     </ion-item>
 
     <ion-item-divider>
