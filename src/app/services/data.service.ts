@@ -61,18 +61,11 @@ export class DataService {
           return true;
         }
       }),
-      groupBy(p => {
-        const timeStart = parse(p.timeStart);
-        const timeEnd = parse(p.timeEnd);
-        return {
-          timeStart,
-          timeEnd
-        };
-      }),
+      groupBy(p => p.timeStart.toISOString()),
       mergeMap(group =>
-        group.pipe(reduce((acc: SessionViewModel[], cur) => [...acc, cur], [group.key]))
+        group.pipe(reduce((acc: SessionViewModel[] | string[], cur) => [...acc, cur], [group.key]))
       ),
-      reduce((acc, cur) => [...acc, { time: cur[0], timeEnd: (cur.slice(1)[0] as any).timeEnd, sessions: cur.slice(1) }], [])
+      reduce((acc, cur) => [...acc, { timeStart: cur[0], timeEnd: (cur.slice(1)[0] as any).timeEnd, sessions: cur.slice(1) }], [])
     );
   }
 

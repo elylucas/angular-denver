@@ -13,7 +13,7 @@
     </ng-container>
     <ion-item-group *ngFor="let sessionGroup of sessionGroups; trackBy: trackByFnSessionGroup">
       <ion-item-divider sticky>
-        <ion-label>{{ sessionGroup.time.timeStart | date: 'h:mm aa' }} - {{ sessionGroup.time.timeEnd | date: 'h:mm aa' }}</ion-label></ion-item-divider
+        <ion-label>{{ sessionGroup.timeStart | date: 'h:mm aa' }} - {{ sessionGroup.timeEnd | date: 'h:mm aa' }}</ion-label></ion-item-divider
       >
       <session-item
         routerLink="./{{ session.id }}"
