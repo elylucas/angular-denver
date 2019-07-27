@@ -1,0 +1,55 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": ["/favicon.ico", "/index.html", "/*.css", "/*.js"]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/**", "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": ["https://denverdevday.blob.core.windows.net/denverdevday/angular-denver-2019.json"],
+      "version": 1,
+      "cacheConfig": {
+        "maxSize": 1,
+        "maxAge": "1d",
+        "timeout": "5s",
+        "strategy": "freshness"
+      }
+    },
+    {
+      "name": "avatar-images",
+      "urls": ["https://angulardenver.com/wp-content/uploads/**"],
+      "version": 1,
+      "cacheConfig": {
+        "maxSize": 1,
+        "maxAge": "1d",
+        "timeout": "5s",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "avatar-images",
+      "urls": ["/svg/*.svg"],
+      "version": 1,
+      "cacheConfig": {
+        "maxSize": 1,
+        "maxAge": "10d",
+        "timeout": "5s",
+        "strategy": "performance"
+      }
+    }
+  ]
+}
