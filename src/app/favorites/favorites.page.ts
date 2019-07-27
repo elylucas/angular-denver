@@ -33,7 +33,7 @@ export class FavoritesPage {
   }
 
   trackByFnSessionGroup(index, sessionGroup: SessionGroup) {
-    return sessionGroup.timeStart;
+    return sessionGroup.time;
   }
 
   toggleFavorite(event: Event, session: SessionViewModel) {

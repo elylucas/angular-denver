@@ -13,7 +13,7 @@
       <ion-label>
         <h2>{{ session.title }}</h2>
         <p>{{ session.timeStart | date: 'h:mm aa' }} - {{ session.timeEnd | date: 'h:mm aa' }}</p>
-        <p>{{ session.room.name }}</p>
+        <p>{{ session.room ? session.room.name : '' }}</p>
       </ion-label>
       <ion-icon
         class="star"
@@ -30,7 +30,7 @@
       <p [innerHTML]="session.abstract | abstract"></p>
     </ion-item>
 
-    <ion-item-divider>
+    <ion-item-divider *ngIf="session.speakers.length > 0">
       <ion-label>Speaker{{ session.speakers.length > 1 ? 's' : '' }}</ion-label>
     </ion-item-divider>
 

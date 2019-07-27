@@ -4,7 +4,7 @@ import { from, Observable } from 'rxjs';
 import { groupBy, map, mergeMap, reduce, filter, tap } from 'rxjs/operators';
 import { SessionGroup, Speaker, DataObject, SessionViewModel, SpeakerGroup } from '../models/models';
 import { FavoritesService } from './favorites.service';
-import { addSeconds, isBefore, parse } from 'date-fns';
+import { addSeconds, isBefore, parse, format } from 'date-fns';
 import { environment } from '../../environment';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class DataService {
   private lastFetch: Date;
   private dataCache: DataObject;
 
-  constructor(private http: HttpClient, private favoritesService: FavoritesService) {}
+  constructor(private http: HttpClient, private favoritesService: FavoritesService) { }
 
   private async fetchData() {
     if (this.dataCache && !this.isCacheExpired()) {
@@ -24,7 +24,7 @@ export class DataService {
   }
 
   getData() {
-    return  from(this.fetchData()).pipe(
+    return from(this.fetchData()).pipe(
       map(data => {
         const sessions = data.sessions as SessionViewModel[];
         sessions.forEach(session => {
@@ -61,11 +61,18 @@ export class DataService {
           return true;
         }
       }),
-      groupBy(p => p.timeStart.toISOString()),
+      groupBy(p => {
+        const timeStart = parse(p.timeStart);
+        const timeEnd = parse(p.timeEnd);
+        return {
+          timeStart,
+          timeEnd
+        };
+      }),
       mergeMap(group =>
-        group.pipe(reduce((acc: SessionViewModel[] | string[], cur) => [...acc, cur], [group.key]))
+        group.pipe(reduce((acc: SessionViewModel[], cur) => [...acc, cur], [group.key]))
       ),
-      reduce((acc, cur) => [...acc, { timeStart: cur[0], sessions: cur.slice(1) }], [])
+      reduce((acc, cur) => [...acc, { time: cur[0], timeEnd: (cur.slice(1)[0] as any).timeEnd, sessions: cur.slice(1) }], [])
     );
   }
 

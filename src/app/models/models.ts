@@ -19,7 +19,10 @@ export interface SessionViewModel extends Session {
 }
 
 export interface SessionGroup {
-  timeStart: string;
+  time: {
+    timeStart: Date;
+    timeEnd: Date;
+  };
   sessions: SessionViewModel[];
 }
 
