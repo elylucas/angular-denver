@@ -15,9 +15,10 @@ export class DataService {
   constructor(private http: HttpClient, private favoritesService: FavoritesService) { }
 
   private async fetchData() {
-    if (this.dataCache && !this.isCacheExpired()) {
-      return await this.dataCache;
-    }
+    // Todo: Programmatically disable for PWAs
+    // if (this.dataCache && !this.isCacheExpired()) {
+    //   return await this.dataCache;
+    // }
     this.dataCache = await this.http.get<DataObject>(environment.dataUrl).toPromise();
     this.lastFetch = new Date();
     return this.dataCache;

@@ -15,6 +15,29 @@
       "resources": {
         "files": ["/assets/**", "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"]
       }
+    },
+    {
+      "name": "svgs",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/svg/ios-arrow-back.svg",
+          "/svg/ios-happy.svg",
+          "/svg/ios-information-circle.svg",
+          "/svg/ios-calendar.svg",
+          "/svg/ios-people.svg",
+          "/svg/ios-star.svg",
+          "/svg/ios-star-outline.svg",
+          "/svg/md-arrow-back.svg",
+          "/svg/md-happy.svg",
+          "/svg/md-information-circle.svg",
+          "/svg/md-calendar.svg",
+          "/svg/md-people.svg",
+          "/svg/md-star.svg",
+          "/svg/md-star-outline.svg",
+          "/svg/logo-twitter.svg"
+        ]
+      }
     }
   ],
   "dataGroups": [
@@ -31,22 +54,11 @@
     },
     {
       "name": "avatar-images",
-      "urls": ["https://angulardenver.com/wp-content/uploads/**"],
+      "urls": ["https://denverdevday.blob.core.windows.net/angulardenver/images/**"],
       "version": 1,
       "cacheConfig": {
-        "maxSize": 1,
+        "maxSize": 100,
         "maxAge": "1d",
-        "timeout": "5s",
-        "strategy": "performance"
-      }
-    },
-    {
-      "name": "avatar-images",
-      "urls": ["/svg/*.svg"],
-      "version": 1,
-      "cacheConfig": {
-        "maxSize": 1,
-        "maxAge": "10d",
         "timeout": "5s",
         "strategy": "performance"
       }

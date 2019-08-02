@@ -14,7 +14,7 @@
 <ion-content>
   <ion-list lines="full">
     <ion-item-group *ngFor="let sessionGroup of sessionGroups; trackBy: trackByFnSessionGroup">
-      <ion-item-divider sticky>
+      <ion-item-divider [attr.sticky]="useStickyDividers() ? '' : null">
         <ion-label>{{ sessionGroup.timeStart | date: 'h:mm aa' }} - {{ sessionGroup.timeEnd | date: 'h:mm aa' }}</ion-label>
       </ion-item-divider>
       <session-item

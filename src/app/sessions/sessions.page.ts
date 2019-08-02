@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionGroup, Session, SessionViewModel } from '../models/models';
 import { DataService } from '../services/data.service';
 import { FavoritesService } from '../services/favorites.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-sessions',
@@ -12,7 +13,7 @@ export class SessionsPage {
   day = '08/01/2019';
   sessionGroups: SessionGroup[];
 
-  constructor(private dataService: DataService, private favoritesService: FavoritesService) { }
+  constructor(private dataService: DataService, private platform: Platform) { }
 
   ionViewWillEnter() {
     this.updateSessions();
@@ -34,6 +35,10 @@ export class SessionsPage {
 
   trackByFnSessionGroup(index, sessionGroup: SessionGroup) {
     return sessionGroup.timeStart;
+  }
+
+  useStickyDividers() {
+    return !(this.platform.is('ios') && !this.platform.is('cordova'));
   }
 
 }

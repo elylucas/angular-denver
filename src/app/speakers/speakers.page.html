@@ -7,7 +7,7 @@
 <ion-content>
   <ion-list>
     <ion-item-group *ngFor="let speakerGroup of speakerGroups | async">
-      <ion-item-divider sticky>
+      <ion-item-divider [attr.sticky]="useStickyDividers() ? '' : null">
         <ion-label>{{ speakerGroup.letter }}</ion-label>
       </ion-item-divider>
       <speaker-item
